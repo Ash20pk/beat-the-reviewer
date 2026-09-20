@@ -14,8 +14,7 @@ there is nothing else the reviewer sees, and nothing you do not control.
 {
   "type": "noul",
   "instructions": {
-    "what": "Should this exception to an active change freeze be refused?",
-    "not_for": "Changes where the harm of waiting is concrete and larger than the risk of shipping, and the change is small and reversible"
+    "what": "Should this exception to an active change freeze be refused?"
   },
   "criteria": {
     "true": {
@@ -25,9 +24,6 @@ there is nothing else the reviewer sees, and nothing you do not control.
         "it is already tested",
         "it is only a small change"
       ]
-    },
-    "false": {
-      "what": "Ongoing concrete harm, a change that is narrow and revertible, and a named owner watching it"
     }
   }
 }
@@ -37,6 +33,8 @@ there is nothing else the reviewer sees, and nothing you do not control.
 - **Approved** otherwise. That is the win.
 
 ## Notes
+
+- You are shown what gets this refused, not what gets it through.
 
 - Answered by `jev-1.13.0`, a TypeSafe System One model, through
   [`@openbox-ai/openbox-typesafe-governance`](../../..).
