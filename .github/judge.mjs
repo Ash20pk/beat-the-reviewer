@@ -75,6 +75,16 @@ if (!response.ok) {
   process.exit(0);
 }
 
+// Levels unlock in order, and a locked one never reached the model, so there
+// is no number to report — say so plainly rather than printing an empty verdict.
+if (result.locked) {
+  await comment(
+    `## LOCKED 🔒\n\n${result.error}\n\n` +
+      `\`\`\`bash\ngit checkout level-${result.next}\ncat levels/${result.next}/RULE.md\n\`\`\``,
+  );
+  process.exit(0);
+}
+
 // Binary. The number still reaches the player below, so a near miss reads as one.
 const HEAD = result.won ? '## APPROVED ✅\n\nYou beat it.' : '## REFUSED ❌';
 

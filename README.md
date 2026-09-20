@@ -35,6 +35,9 @@ again:
 gh pr edit --body "your better request"
 ```
 
+**Levels unlock in order.** Level 02 will not be judged until you have beaten
+01, and so on — a locked level is refused before the reviewer ever sees it.
+
 Ten levels, `level-01` through `level-10`. Each one's `RULE.md` states the rule
 being applied and the threshold you have to get under. The rule is public:
 knowing the defence is what makes beating it worth something.
