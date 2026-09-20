@@ -120,4 +120,20 @@ if (result.won) {
     method: 'PUT',
     body: JSON.stringify({ merge_method: 'squash', commit_title: `${PR_TITLE} (level ${level})` }),
   });
+
+  // Claim the place on the board. The server re-checks all of this against
+  // GitHub, so nothing here is trusted — a failed claim is reported to the
+  // player rather than retried or hidden.
+  const claim = await fetch(JUDGE_URL.replace(/\/judge$/, '/win'), {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ level, repo: REPO, pr: Number(PR_NUMBER), player: PLAYER }),
+  });
+  const outcome = await claim.json().catch(() => ({}));
+
+  if (outcome.recorded) {
+    await comment(`On the board: **${PLAYER}**, level ${level}.`);
+  } else if (outcome.error) {
+    await comment(`Merged, but not recorded on the board — ${outcome.error}.`);
+  }
 }
