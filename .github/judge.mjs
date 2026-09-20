@@ -46,10 +46,13 @@ if (!level) {
     [
       '## Not a level',
       '',
-      'Levels are branches. Check one out, then open the pull request from it:',
+      'A level is a branch you create, named `level-01` … `level-10`:',
       '',
       '```bash',
-      'git checkout level-01',
+      'git checkout -b level-01 main',
+      'echo "my attempt" > attempts/01.md',
+      'git add . && git commit -m "level 01"',
+      'git push -u origin level-01',
       '```',
     ].join('\n'),
   );
@@ -89,7 +92,7 @@ if (!response.ok) {
 if (result.locked) {
   await comment(
     `## LOCKED 🔒\n\n${result.error}\n\n` +
-      `\`\`\`bash\ngit checkout level-${result.next}\ncat levels/${result.next}/RULE.md\n\`\`\``,
+      `\`\`\`bash\ncat levels/${result.next}/RULE.md\ngit checkout -b level-${result.next} main\n\`\`\``,
   );
   process.exit(0);
 }
