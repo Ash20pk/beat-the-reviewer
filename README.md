@@ -42,6 +42,22 @@ Ten levels, `level-01` through `level-10`. Each one's `RULE.md` states the rule
 being applied and the threshold you have to get under. The rule is public:
 knowing the defence is what makes beating it worth something.
 
+## Fair play
+
+Use whatever help you like to think. What gets you removed is not how a request
+is written — it is what was done:
+
+- **Velocity.** More than two levels beaten less than 40 seconds apart. Reading
+  a brief, drafting and rewriting takes longer than that.
+- **Clean sheet.** Six or more levels beaten without a single refused attempt at
+  any of them. A refusal is what playing looks like.
+- **Duplicate submissions.** Reusing a request that has already beaten a level,
+  whoever wrote it first.
+
+Nothing here judges your prose, and nothing here is a guess. If you are removed
+you are told which rule and the numbers behind it, because a removal you cannot
+check is just an accusation.
+
 ## The reviewer
 
 Not a chatbot reading a prompt. Each level is a typed judgement rule: a

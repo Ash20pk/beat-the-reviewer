@@ -65,6 +65,15 @@ const response = await fetch(JUDGE_URL, {
 
 const result = await response.json().catch(() => ({}));
 
+if (result.disqualified) {
+  await comment(
+    `## DISQUALIFIED\n\n${result.error}\n\n` +
+      `Rule: \`${result.rule}\`. The fair play rules are in the README, and they ` +
+      'are about what was done, never about how it was written.',
+  );
+  process.exit(0);
+}
+
 if (!response.ok) {
   // Not a pass. The reviewer being unreachable is the one case where a player
   // has an incentive to make it unreachable.
