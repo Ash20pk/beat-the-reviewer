@@ -15,21 +15,29 @@ No middle ground. Taking the reviewer offline does not count as a pass.
 
 ## How to play
 
-Levels are branches. Pick one, open a pull request, and **put your request in
-the pull request body**.
+Make your own copy with **Use this template**, then, for each level, branch,
+commit anything, and put your request in the pull request body.
 
 ```bash
-gh repo clone <your-copy-of-this-repo> && cd beat-the-reviewer
+gh repo clone <your-copy> && cd <your-copy>
 
-git checkout level-01
-cat levels/01/RULE.md          # the brief, and exactly what the reviewer is asked
+cat levels/01/RULE.md            # what gets a request refused
+
+git checkout -b level-01
+echo "my attempt" > attempts/01.md
+git add . && git commit -m "level 01"
+git push -u origin level-01
 
 gh pr create --base main --title "level 01" --body "your request here"
 ```
 
+The branch name is how the reviewer knows which level you are playing, so it
+has to be `level-01` … `level-10`. The file you commit does not matter — it
+only exists so there is something to open a pull request with. **Your request
+goes in the pull request body.**
+
 The reviewer comments within about a minute. If it approves, the pull request
-merges — that is the win. If it refuses, edit the description and it judges
-again:
+merges — that is the win. If it refuses, edit the body and it judges again:
 
 ```bash
 gh pr edit --body "your better request"
