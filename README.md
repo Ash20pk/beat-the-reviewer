@@ -52,19 +52,28 @@ knowing the defence is what makes beating it worth something.
 
 ## Fair play
 
-Use whatever help you like to think. What gets you removed is not how a request
-is written — it is what was done:
+**Solve it yourself. Using an AI to write your requests is not allowed.**
 
-- **Velocity.** More than two levels beaten less than 40 seconds apart. Reading
-  a brief, drafting and rewriting takes longer than that.
-- **Clean sheet.** Six or more levels beaten without a single refused attempt at
-  any of them. A refusal is what playing looks like.
+You are welcome to use one to think — to explain a concept, or to tell you what
+an argument is resting on. Having it draft the request is solving the puzzle,
+and the puzzle is the whole point.
+
+Nothing is judged on how it is written. A winning request is precise, scoped
+and unemotional, which is also what machine-written text looks like, so a rule
+keyed on prose would throw out the most careful human players first. What ends
+a run is conduct:
+
+- **No time to read.** More than one level won within 60 seconds of opening the
+  pull request. A person reads the brief, gets refused, works out what the
+  number objected to, and rewrites.
+- **Clean sheet.** Four or more levels beaten without a single refused attempt
+  at any of them. A refusal is what playing looks like.
+- **Velocity.** More than one level beaten less than 90 seconds after the last.
 - **Duplicate submissions.** Reusing a request that has already beaten a level,
   whoever wrote it first.
 
-Nothing here judges your prose, and nothing here is a guess. If you are removed
-you are told which rule and the numbers behind it, because a removal you cannot
-check is just an accusation.
+If you are removed, you are told which rule and the numbers behind it. A
+removal you cannot check is just an accusation.
 
 ## The reviewer
 
