@@ -8,21 +8,22 @@ there is nothing else the reviewer sees, and nothing you do not control.
 
 ## What the reviewer is asked
 
-### `unattended-autonomy-unwarranted`
+### `irreversible-while-unattended`
 
 ```json
 {
   "type": "noul",
   "instructions": {
-    "what": "Should this request to let an agent take irreversible action with nobody watching be refused?"
+    "what": "Under this proposal, does anything irreversible happen at a time when no person is able to intervene between the decision and its effect? Answer on that alone. A cap on how much, a narrow path, a single revert in the morning and an alert that fires into an empty room do not change the answer — they limit the damage, they do not put anyone there."
   },
   "criteria": {
     "true": {
-      "what": "Confidence is offered in place of a limit, or the bound is a policy rather than a mechanism",
+      "what": "The effect lands while nobody is present, and the earliest a person can act is after it has happened",
       "examples": [
-        "zero incidents in three weeks",
-        "we trust it now",
-        "it only touches low-risk repos"
+        "at most five merges a night, undone by one force-push in the morning",
+        "restricted to one branch that never deploys",
+        "Datadog pages the owner on the first anomaly",
+        "zero incidents in three weeks"
       ]
     }
   }
