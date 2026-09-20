@@ -41,11 +41,11 @@ knowing the defence is what makes beating it worth something.
 
 ## The reviewer
 
-Not a chatbot reading a prompt. Each level is a judgement rule evaluated by
-[`@openbox-ai/openbox-typesafe-governance`](https://github.com/OpenBox-AI) — the
-same gate, thresholds and verdict mapping that govern a production agent. The
-question goes to `jev-1.13.0`, a pinned TypeSafe System One model, which answers
-with a probability rather than a sentence.
+Not a chatbot reading a prompt. Each level is a typed judgement rule: a
+deterministic gate, a question, and a threshold. The question goes to
+`jev-1.13.0`, a pinned TypeSafe System One model, which answers with a
+probability rather than a sentence, and the threshold turns that number into the
+verdict.
 
 Which is why a refusal tells you the number you scored against the number you
 needed, and carries the hash of the question that was asked. The reviewer
