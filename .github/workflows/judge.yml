@@ -1,0 +1,53 @@
+# The reviewer.
+#
+# Runs in the player's own copy of the game, on their own pull requests, so
+# there is no fork-secrets problem to have: pull_request is correct here and
+# pull_request_target would be the usual footgun for no benefit.
+#
+# There is no TYPESAFE_API_KEY in this repository and there is nothing to add.
+# Judgement happens on the hosted endpoint, which holds the key; this workflow
+# sends a level number, a title and a body, and gets a verdict back.
+name: reviewer
+
+on:
+  pull_request:
+    types: [opened, edited, reopened, synchronize]
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  # One verdict per pull request at a time. Editing the description twice in
+  # quick succession should not produce two comments racing each other.
+  group: reviewer-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      # The base ref, never the pull request head: the judge script must not be
+      # something the pull request under judgement was able to edit.
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.base.sha }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: judge
+        env:
+          # Everything the player wrote arrives as an environment variable.
+          # Interpolating it into the script body would let a description
+          # containing a quote become shell.
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_BODY: ${{ github.event.pull_request.body }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          PR_BRANCH: ${{ github.event.pull_request.head.ref }}
+          PLAYER: ${{ github.event.pull_request.user.login }}
+          REPO: ${{ github.repository }}
+          GITHUB_TOKEN: ${{ github.token }}
+          JUDGE_URL: ${{ vars.JUDGE_URL || 'https://beat-the-reviewer.vercel.app/api/judge' }}
+        run: node .github/judge.mjs
