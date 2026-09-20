@@ -146,3 +146,9 @@ has beaten what, and which levels nobody has taken yet.
 Only public copies of this template appear. Every win is re-checked against
 GitHub before it is recorded — the pull request has to exist, be merged, sit on
 the branch it claims, and be yours.
+
+Because your copy has to be public, **the reviewer redacts your winning request
+once the win is recorded.** Otherwise your repository would publish a working
+answer to every level you have beaten. The verdict and the number stay in the
+comments; only the text that won is removed. Names on the board are not
+links, for the same reason.

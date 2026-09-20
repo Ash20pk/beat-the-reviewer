@@ -158,4 +158,19 @@ if (result.won) {
   } else if (outcome.error) {
     await comment(`Merged, but not recorded on the board — ${outcome.error}.`);
   }
+
+  // Redact the winning request now that it has been read and recorded.
+  //
+  // A copy has to be public to appear on the board, which would otherwise
+  // publish a working answer to every level its owner has beaten — findable
+  // from the board, or from anyone's repository list. The verdict and the
+  // number stay in the comments; only the text that won is removed.
+  await api(`/pulls/${PR_NUMBER}`, {
+    method: 'PATCH',
+    body: JSON.stringify({
+      body:
+        `_Redacted after the win was recorded, so this copy does not publish a ` +
+        `working answer to level ${level}. The verdict is in the comments below._`,
+    }),
+  });
 }
